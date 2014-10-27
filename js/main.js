@@ -1,4 +1,4 @@
-var lifeMatrix = [[0, 0, 0], [0, 1, 0], [1, 1, 1]];
+var lifeMatrix = randomMatrix(3, 3);
 
 document.addEventListener('DOMContentLoaded', function(){
   var table = generateTable(lifeMatrix);
@@ -26,4 +26,19 @@ function generateTable(matrix){
 function appendTableFragmentToDOM(innerFragment){
   var $table = document.querySelector('table');
   $table.appendChild(innerFragment);
+}
+
+function randomMatrix(x, y){
+  var matrix = [];
+  for (var i = 0; i < x; i++){
+    matrix[i] = [];
+    for (var j = 0; j < y; j++){
+      matrix[i][j] = randomZeroOne();
+    }
+  }
+  return matrix;
+}
+
+function randomZeroOne(){
+  return Math.round(Math.random());
 }
