@@ -13,7 +13,13 @@ function generateTable(matrix){
 
     row.forEach(function(item){
       var $td = document.createElement('td');
-      $td.textContent = item;
+
+      if (item) {
+        addClass($td, 'alive');
+      } else {
+        removeClass($td, 'alive');
+      }
+
       $tr.appendChild($td);
     });
 
@@ -41,4 +47,24 @@ function randomMatrix(x, y){
 
 function randomZeroOne(){
   return Math.round(Math.random());
+}
+
+function addClass(element, className){
+  if (element.classList) {
+    element.classList.add(className);
+  } else {
+    element.className += ' ' + className;
+  }
+}
+
+function removeClass(element, className){
+  if (element.classList) {
+    element.classList.remove(className);
+  } else {
+    element.className = element.className.replace(
+      new RegExp(
+        '(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'
+      ), ' '
+    );
+  }
 }
