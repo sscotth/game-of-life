@@ -11,10 +11,10 @@ function generateTable(matrix){
   matrix.forEach(function(row){
     var $tr = document.createElement('tr');
 
-    row.forEach(function(item){
+    row.forEach(function(cell){
       var $td = document.createElement('td');
 
-      if (item) {
+      if (cell) {
         addClass($td, 'alive');
       } else {
         removeClass($td, 'alive');
